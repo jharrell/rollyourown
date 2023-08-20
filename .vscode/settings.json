@@ -17,5 +17,6 @@
   "deno.unstable": true,
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
-  }
+  },
+  "editor.tabSize": 2
 }
