@@ -18,9 +18,3 @@ model Creature {
   name        String
   description String
 }
-
-// model Dinosaur {
-//   id          Int    @id @default(autoincrement())
-//   name        String @unique
-//   description String
-// }

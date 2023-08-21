@@ -21,7 +21,7 @@ const {
   warnOnce,
   defineDmmfProperty,
   Public,
-} = require('./runtime/data-proxy')
+} = require('./runtime/library')
 
 
 const Prisma = {}
@@ -149,7 +149,7 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
-  "dataProxy": true,
+  "dataProxy": false,
   "postinstall": false
 }
 
@@ -174,20 +174,10 @@ config.runtimeDataModel = JSON.parse("{\"models\":{\"Creature\":{\"dbName\":null
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
 
 
-config.inlineSchema = 'Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwKLy8gbGVhcm4gbW9yZSBhYm91dCBpdCBpbiB0aGUgZG9jczogaHR0cHM6Ly9wcmlzLmx5L2QvcHJpc21hLXNjaGVtYQoKZ2VuZXJhdG9yIGNsaWVudCB7CiAgcHJvdmlkZXIgICAgICAgID0gInByaXNtYS1jbGllbnQtanMiCiAgcHJldmlld0ZlYXR1cmVzID0gWyJkZW5vIl0KICBvdXRwdXQgICAgICAgICAgPSAiLi9nZW5lcmF0ZWQiCn0KCmRhdGFzb3VyY2UgZGIgewogIHByb3ZpZGVyICA9ICJwb3N0Z3Jlc3FsIgogIHVybCAgICAgICA9IGVudigiREFUQUJBU0VfVVJMIikKICBkaXJlY3RVcmwgPSBlbnYoIkRJUkVDVF9VUkwiKQp9Cgptb2RlbCBDcmVhdHVyZSB7CiAgaWQgICAgICAgICAgU3RyaW5nIEBpZCBAZGVmYXVsdChkYmdlbmVyYXRlZCgidXVpZF9nZW5lcmF0ZV92NygpIikpIEBkYi5VdWlkCiAgbmFtZSAgICAgICAgU3RyaW5nCiAgZGVzY3JpcHRpb24gU3RyaW5nCn0KCi8vIG1vZGVsIERpbm9zYXVyIHsKLy8gICBpZCAgICAgICAgICBJbnQgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkKLy8gICBuYW1lICAgICAgICBTdHJpbmcgQHVuaXF1ZQovLyAgIGRlc2NyaXB0aW9uIFN0cmluZwovLyB9Cg=='
-config.inlineSchemaHash = '9edb196f906594944ce482d6b6afc4a4a02e7253a69ef6f9429acbd800379a06'
-
-config.inlineDatasources = {
-  "db": {
-    "url": {
-      "fromEnvVar": "DATABASE_URL",
-      "value": null
-    }
-  }
-}
 
 
-const { warnEnvConflicts } = require('./runtime/data-proxy')
+
+const { warnEnvConflicts } = require('./runtime/library')
 
 warnEnvConflicts({
     rootEnvPath: config.relativeEnvPaths.rootEnvPath && path.resolve(config.dirname, config.relativeEnvPaths.rootEnvPath),
@@ -198,3 +188,7 @@ const PrismaClient = getPrismaClient(config)
 exports.PrismaClient = PrismaClient
 Object.assign(exports, Prisma)
 
+path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
+path.join(process.cwd(), "prisma/generated/libquery_engine-darwin-arm64.dylib.node")
+path.join(__dirname, "schema.prisma");
+path.join(process.cwd(), "prisma/generated/schema.prisma")

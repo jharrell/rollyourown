@@ -13,3 +13,6 @@ node_modules/
 
 # honestly not sure if we should be .gitignoring the generated client or not.
 # prisma/generated/
+
+# MacOS files
+*.DS_Store
